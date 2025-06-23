@@ -1,6 +1,6 @@
 
 #Heap Data Structure
-
+#https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/hpsrt.html Resource
 #root = 0. right = 2*i, left = 2*i + 1, Parents = i/2
 
 vetor = [30, 15, 19, 10, 18, 25]
