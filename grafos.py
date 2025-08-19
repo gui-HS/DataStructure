@@ -19,7 +19,7 @@ class Grafo:
             print(i)
 
     def insereV(self):
-        self.listaVertices.append(Vertice("v"+len(self.listaVertices())))
+        self.listaVertices.append(Vertice(len(self.listaVertices())))
 
     def removeV(self, v):
         self.listaVetores.remove(v) #Remove da lista de vetores
@@ -61,6 +61,16 @@ class Grafo:
     def vertices(self, e):
         temp = self.listaAresta[e]
         print(f"{e} = ({temp.v1}, {temp.v2})")
+
+    def arestasE(self, v):
+        for i in self.listaAresta:
+            if i.v1 == v:
+                print(i)
+    
+    def arestasS(self, v):
+        for i in self.listaAresta:
+            if i.v2 == v:
+                print(i)
 
 class Vertice:
     def __init__(self):
