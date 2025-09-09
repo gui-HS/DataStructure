@@ -1,61 +1,46 @@
 from grafo import *
-from grafo import Grafo
+from fila import *
 
 class BFS(Grafo):
-    def __init__(self, listaVertices, listaAresta):
-        super().__init__(listaVertices, listaAresta)
-        self.s = Vertice()
+    def __init__(self):
+        super().__init__()
+        self.s = None
         self.Q = Fila()
 
-    def algoritmoBFS(self):
+    def algoritmoBFS(self): #Inicializando elementos
+        cont = 0
         for v in self.listaVertices:
-            v.cor = -1
+            v.nome = cont
+            v.cor = "branco"
             v.caminho = None
             v.d = True #True = Infinito
+            cont += 1
 
+        #Inicilizando busca em vertice atual
+        self.s = self.listaVertices[0]
         self.s.d = 0
-        self.s.cor = 1
+        self.s.cor = "cinza"
+        self.Q = Fila()
         self.Q.insere(self.s)
 
-        while self.Q.inicial:
+        while self.Q.inicial: #Enquanto houver vertices na fila
             u = self.Q.remove()
-            for v in u.getArestas:
-                if v.cor == -1:
+            for v in u.getAresta():
+                if v.cor == "branco":
                     self.Q.insere(v)
-                    v.cor = 1 #Cor para Cinza
+                    v.cor = "cinza" #Cor para Cinza
                     v.roteamento = u #Roteamento (pai) de v será u
                     v.d = u.d + 1 #Distância de v
-        u.cor = 0
+        u.cor = "preto"
 
-class Fila:
-    def __init__(self):
-        self.inicial = None
-
-    
-    def insere(self, v):
-        if not(self.inicial):
-            self.inicial = v
+    def imprimeCaminho(self, G, s, v): #s (vetor inicial), v (vetor final)
+        if s == v:
+            print(s.nome)
+        elif v.rotemento == None:
+            print("Não existe caminho de s para v!")
         else:
-            temp = self.inicial
-            while temp.next != None:
-                temp = temp.next
-            temp.next = v
-
-    def remove(self):
-        temp = self.inicial
-        self.inicial = self.inicial.next
-
-        return temp
-    
-    def imprimir(self):
-        if not(self.inicial):
-            return
-        else:
-            temp = self.inicial
-            while temp:
-                print(temp.getNome())
-                temp = temp.next
-
+            self.imprimeCaminho(self, G, s, v.roteamento)
+            print(v.nome)
 
 def testeFila():
     fila1 = Fila()
@@ -70,14 +55,18 @@ def testeFila():
 
 def testeBFS():
     grafo1 = BFS()
-
-    grafo1 = Grafo()
     for i in range(25):
         grafo1.insereV()
 
     for i in range((len(grafo1.listaVertices)-1)):
         grafo1.insereA(i,i+1)
     
-    grafoBfs1 = BFS(grafo1)
-    grafoBfs1.algoritmoBFS(Vertice(1))
+    grafo1.listaVertices[1].addAdjacente(grafo1.listaAresta[2])
 
+    print(grafo1.listaVertices[1].getAresta())
+    grafo1.algoritmoBFS()
+    #print(grafo1.listaVertices, grafo1.listaAresta)
+    
+    print(grafo1.imprimeCaminho())
+
+testeBFS()
