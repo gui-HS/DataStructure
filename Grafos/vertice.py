@@ -1,14 +1,15 @@
-from grafoBFS import *
+from fila import *
 
 class Vertice:
     def __init__(self, nome):
         self.__aresta = list()
         self.__nome = nome
         self.next = None
-        self.cor = -1 #BRANCO = -1, CINZA = 1, PRETO = 0 
-        self.fila = Fila()
-        self.d = int()
-    
+        self.cor = None #BRANCO (On), CINZA (On operation), PRETO (off)
+        self.caminho = None
+        self.d = None
+        self.roteamento = None
+
     def setNome(self, nome):
         self.__nome = nome
 
