@@ -25,22 +25,23 @@ class BFS(Grafo):
 
         while self.Q.inicial: #Enquanto houver vertices na fila
             u = self.Q.remove()
-            for v in u.getAresta():
+            for v in u.adj():
                 if v.cor == "branco":
                     self.Q.insere(v)
                     v.cor = "cinza" #Cor para Cinza
                     v.roteamento = u #Roteamento (pai) de v será u
                     v.d = u.d + 1 #Distância de v
-        u.cor = "preto"
+            u.cor = "preto"
 
-    def imprimeCaminho(self, G, s, v): #s (vetor inicial), v (vetor final)
+    def imprimeCaminho(self, s, v): #s (vetor inicial), v (vetor final)
         if s == v:
             print(s.nome)
-        elif v.rotemento == None:
+        elif v.roteamento == None:
             print("Não existe caminho de s para v!")
+            return
         else:
-            self.imprimeCaminho(self, G, s, v.roteamento)
-            print(v.nome)
+            self.imprimeCaminho(s, v.roteamento)
+            print("Vertice:", v.nome)
 
 def testeFila():
     fila1 = Fila()
@@ -57,16 +58,23 @@ def testeBFS():
     grafo1 = BFS()
     for i in range(25):
         grafo1.insereV()
-
-    for i in range((len(grafo1.listaVertices)-1)):
-        grafo1.insereA(i,i+1)
     
-    grafo1.listaVertices[1].addAdjacente(grafo1.listaAresta[2])
+    #for i in grafo1.listaVertices:
+    #    grafo1.insereA(i,i)
 
-    print(grafo1.listaVertices[1].getAresta())
+    grafo1.insereA(grafo1.listaVertices[0], grafo1.listaVertices[12])
+    grafo1.insereA(grafo1.listaVertices[12], grafo1.listaVertices[2])
+    grafo1.insereA(grafo1.listaVertices[2], grafo1.listaVertices[3])
+    grafo1.insereA(grafo1.listaVertices[3], grafo1.listaVertices[4])
+    grafo1.insereA(grafo1.listaVertices[4], grafo1.listaVertices[5])
+
+    
+    #grafo1.listaVertices[1].addAdjacente(grafo1.listaAresta[2])
+
     grafo1.algoritmoBFS()
     #print(grafo1.listaVertices, grafo1.listaAresta)
     
-    print(grafo1.imprimeCaminho())
+    print("Caminho do vértice 0 até 3: (Deve percorrer 0,12,2,3)")
+    grafo1.imprimeCaminho(grafo1.listaVertices[0],grafo1.listaVertices[3])
 
 testeBFS()
