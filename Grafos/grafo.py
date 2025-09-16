@@ -33,8 +33,8 @@ class Grafo:
     
     def insereA(self, u, v):
         aresta = Aresta(len(self.listaAresta), u, v)
-        u = self.listaVertices[u]
-        v = self.listaVertices[v]
+        #u = self.listaVertices[u]
+        #v = self.listaVertices[v]
         u.addAdjacente(aresta)    
         v.addAdjacente(aresta)
         self.listaAresta.append(aresta)
@@ -46,10 +46,12 @@ class Grafo:
                 if j == e:
                     i.remove(e)
 
-    def adj(self, v):
+    def adj(self, v): #Adaptado para o exercicio de grafoBFS
+        bla = []
         for i in self.listaVertices[v]:
             for j in i.aresta:
-                print(j)
+                bla.append(j)
+        return bla
 
     def getA(self, u, v):
         for i in self.listaAresta:
