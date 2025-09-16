@@ -38,8 +38,8 @@ class DFS(Grafo):
                 temp = u.roteamento.getNome()
             else:
                 temp = None
-            print("Vetor:", u.getNome(), "Tempo de abertura:", u.abertura,
-                "Tempo de Fechamento:", u.fechamento, "Vetor antecessor:", temp)
+            print("Vetor:", u.getNome(), "| Tempo de abertura:", u.abertura,
+                "| Tempo de Fechamento:", u.fechamento, "| Vetor antecessor:", temp)
             
 
 def testeDFS():
