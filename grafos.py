@@ -23,17 +23,16 @@ class Grafo:
         self.listaVertices.append(Vertice(len(self.listaVertices)))
 
     def removeV(self, v):
-        del self.listaVertices[v] #Remove da lista de vetores
+        for i in self.listaVertices: #Remove da lista de vetores
+            if i == v:
+                print("bla")
 
-        #Remove da lista de arestas
-        for i in self.listaAresta:
+        for i in self.listaAresta: #Remove da lista de arestas
             if (i.v1 == v or i.v2 == v):
-                self.listaAresta.remove(i)
+                self.listaAresta.remove(i) 
     
     def insereA(self, u, v):
         aresta = Aresta(len(self.listaAresta), u, v)
-        u = self.listaVertices[u]
-        v = self.listaVertices[v]
         u.addAdjacente(aresta)    
         v.addAdjacente(aresta)
         self.listaAresta.append(aresta)

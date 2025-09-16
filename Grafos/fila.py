@@ -1,3 +1,5 @@
+from vertice import Vertice
+
 class Fila:
     def __init__(self):
         self.inicial = None
@@ -25,3 +27,14 @@ class Fila:
             while temp:
                 print(temp.getNome())
                 temp = temp.next
+
+def testeFila():
+    fila1 = Fila()
+
+    fila1.insere(Vertice(1))
+    fila1.insere(Vertice(2))
+    fila1.insere(Vertice(3))
+    fila1.imprimir()
+    fila1.remove()
+    print("Após remoção: ")
+    fila1.imprimir()

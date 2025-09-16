@@ -43,24 +43,10 @@ class BFS(Grafo):
             self.imprimeCaminho(s, v.roteamento)
             print("Vertice:", v.nome)
 
-def testeFila():
-    fila1 = Fila()
-
-    fila1.insere(Vertice(1))
-    fila1.insere(Vertice(2))
-    fila1.insere(Vertice(3))
-    fila1.imprimir()
-    fila1.remove()
-    print("Após remoção: ")
-    fila1.imprimir()
-
 def testeBFS():
     grafo1 = BFS()
     for i in range(25):
         grafo1.insereV()
-    
-    #for i in grafo1.listaVertices:
-    #    grafo1.insereA(i,i)
 
     grafo1.insereA(grafo1.listaVertices[0], grafo1.listaVertices[12])
     grafo1.insereA(grafo1.listaVertices[12], grafo1.listaVertices[2])
@@ -68,11 +54,7 @@ def testeBFS():
     grafo1.insereA(grafo1.listaVertices[3], grafo1.listaVertices[4])
     grafo1.insereA(grafo1.listaVertices[4], grafo1.listaVertices[5])
 
-    
-    #grafo1.listaVertices[1].addAdjacente(grafo1.listaAresta[2])
-
     grafo1.algoritmoBFS()
-    #print(grafo1.listaVertices, grafo1.listaAresta)
     
     print("Caminho do vértice 0 até 3: (Deve percorrer 0,12,2,3)")
     grafo1.imprimeCaminho(grafo1.listaVertices[0],grafo1.listaVertices[3])

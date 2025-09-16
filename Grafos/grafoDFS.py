@@ -40,11 +40,22 @@ class DFS(Grafo):
                 temp = None
             print("Vetor:", u.getNome(), "| Tempo de abertura:", u.abertura,
                 "| Tempo de Fechamento:", u.fechamento, "| Vetor antecessor:", temp)
-            
+    
+    def verConexidade(self): #Metodo para classificar um grafo nao dirigido como conexo ou nao-conexo
+        c = 0
+        for v in self.V:
+            v.cor = "branco"
+
+        for u in self.V:
+            if u.roteamento == None:
+                v.cor = "preto"
+                c += 1
+        print("Quantidade de componentes conexos:", c)
+        
 
 def testeDFS():
     grafo1 = DFS()
-    for i in range(25):
+    for i in range(15):
         grafo1.insereV()
 
     grafo1.insereA(grafo1.listaVertices[0], grafo1.listaVertices[12])
@@ -53,7 +64,22 @@ def testeDFS():
     grafo1.insereA(grafo1.listaVertices[3], grafo1.listaVertices[4])
     grafo1.insereA(grafo1.listaVertices[4], grafo1.listaVertices[5])
 
+    grafo2 = DFS()
+    for i in range(5):
+        grafo2.insereV()
+    
+    grafo2.insereA(grafo2.listaVertices[0], grafo2.listaVertices[1])
+    grafo2.insereA(grafo2.listaVertices[1], grafo2.listaVertices[2])
+    grafo2.insereA(grafo2.listaVertices[2], grafo2.listaVertices[3])
+    grafo2.insereA(grafo2.listaVertices[3], grafo2.listaVertices[4])
+
     grafo1.DFS()
     grafo1.printVerotes()
+    grafo1.verConexidade()
+    print("\n"*5)
+
+    grafo2.DFS()
+    grafo2.printVerotes()
+    grafo2.verConexidade()
 
 testeDFS()

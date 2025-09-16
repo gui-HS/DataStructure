@@ -1,5 +1,3 @@
-from fila import *
-
 class Vertice:
     def __init__(self, nome):
         self.__aresta = list() #Lista de arestas conectadas ao vetor
