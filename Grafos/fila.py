@@ -1,26 +1,27 @@
-from fila import *
+class Fila:
+    def __init__(self):
+        self.inicial = None
 
-class Vertice:
-    def __init__(self, nome):
-        self.__aresta = list()
-        self.__nome = nome
-        self.next = None
-        self.cor = None #BRANCO (On), CINZA (On operation), PRETO (off)
-        self.caminho = None
-        self.d = None
-        self.roteamento = None
-
-    def setNome(self, nome):
-        self.__nome = nome
-
-    def getNome(self):
-        return self.__nome
-
-    def addAdjacente(self, aresta):
-        self.__aresta.append(aresta)
-
-    def lenAresta(self):
-        return len(self.__aresta)
     
-    def getAresta(self):
-        return self.__aresta
+    def insere(self, v):
+        if not(self.inicial):
+            self.inicial = v
+        else:
+            temp = self.inicial
+            while temp.next != None:
+                temp = temp.next
+            temp.next = v
+
+    def remove(self):
+        temp = self.inicial
+        self.inicial = self.inicial.next
+        return temp
+    
+    def imprimir(self):
+        if not(self.inicial):
+            return
+        else:
+            temp = self.inicial
+            while temp:
+                print(temp.getNome())
+                temp = temp.next
