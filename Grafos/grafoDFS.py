@@ -23,7 +23,7 @@ class DFS(Grafo):
         self.tempo = self.tempo + 1
         u.abertura = self.tempo
 
-        for v in u.adj():
+        for v in u.adjV():
             if v.cor == "branco":
                 v.roteamento = u
                 self.DFSVisit(v)
@@ -42,17 +42,13 @@ class DFS(Grafo):
                 "| Tempo de Fechamento:", u.fechamento, "| Vetor antecessor:", temp)
     
     def verConexidade(self): #Metodo para classificar um grafo nao dirigido como conexo ou nao-conexo
-        #Inicializar vetores
-        for i in self.listaVertices:
-            
-            self.DFSVisit(i)
+        #Inicialize vectors
+        self.DFS()
         c = 0
-        for v in self.V:
-            v.cor = "branco"
 
         for u in self.V:
             if u.roteamento == None:
-                v.cor = "preto"
+                u.cor = "preto"
                 c += 1
         print("Quantidade de componentes conexos:", c)
         

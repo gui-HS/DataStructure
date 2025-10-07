@@ -31,3 +31,10 @@ class Vertice:
         #    a = i.getV2()
         #    bla.append(a)
         return self.aresta
+    
+    def adjV(self):
+        setV = set()
+        for i in self.aresta:
+            setV.add(i.getV1())
+            setV.add(i.getV2())
+        return setV
