@@ -32,7 +32,10 @@ class BFS(Grafo):
                     v.roteamento = u #Roteamento (pai) de v será u
                     v.d = u.d + 1 #Distância de v
             u.cor = "preto"
-
+    
+    def conexidade(self):
+        pass
+    
     def imprimeCaminho(self, s, v): #s (vetor inicial), v (vetor final)
         if s == v:
             print(s.nome)

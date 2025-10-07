@@ -72,12 +72,12 @@ class GrafoDirigido:
         temp = self.listaAresta[e]
         print(f"{e} = ({temp.v1}, {temp.v2})")
 
-    def arestasE(self, v):
-        for i in self.listaAresta:
-            if i.v1 == v:
-                print(i)
-    
     def arestasS(self, v):
         for i in self.listaAresta:
-            if i.v2 == v:
+            if i.getV1() == v:
+                print(i)
+    
+    def arestasE(self, v):
+        for i in self.listaAresta:
+            if i.getV2() == v:
                 print(i)

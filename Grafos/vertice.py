@@ -1,6 +1,6 @@
 class Vertice:
     def __init__(self, nome):
-        self.__aresta = list() #Lista de arestas conectadas ao vetor
+        self.aresta = list() #Lista de arestas conectadas ao vetor
         self.__nome = nome
         self.next = None #Refência ao próximo vetor
         self.cor = None #BRANCO (On), CINZA (On operation), PRETO (off)
@@ -17,17 +17,17 @@ class Vertice:
         return self.__nome
 
     def addAdjacente(self, aresta):
-        self.__aresta.append(aresta)
+        self.aresta.append(aresta)
 
     def lenAresta(self):
-        return len(self.__aresta)
+        return len(self.aresta)
     
     def getAresta(self):
-        return self.__aresta
+        return self.aresta
     
     def adj(self):
-        bla = []
-        for i in self.__aresta:
-            a = i.getV2()
-            bla.append(a)
-        return bla
+        #bla = []
+        #for i in self.aresta:
+        #    a = i.getV2()
+        #    bla.append(a)
+        return self.aresta

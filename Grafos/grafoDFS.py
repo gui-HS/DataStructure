@@ -42,6 +42,10 @@ class DFS(Grafo):
                 "| Tempo de Fechamento:", u.fechamento, "| Vetor antecessor:", temp)
     
     def verConexidade(self): #Metodo para classificar um grafo nao dirigido como conexo ou nao-conexo
+        #Inicializar vetores
+        for i in self.listaVertices:
+            
+            self.DFSVisit(i)
         c = 0
         for v in self.V:
             v.cor = "branco"
