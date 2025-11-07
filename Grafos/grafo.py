@@ -24,11 +24,11 @@ class Grafo:
         self.listaVertices.append(Vertice(len(self.listaVertices)))
 
     def removeV(self, v):
-        self.listaVertices = [i for i in self.listaVertices if i != v] #Remove da lista de vetores
+        self.listaVertices = [i for i in self.listaVertices if i != v] #Remove da lista de vertices
         self.listaAresta = [i for i in self.listaAresta if i.getV1() != v and i.getV2() != v] #Remove todas arestas
 
-        for vertices in self.listaVertices: #Remove todas instâncias presentes nas lista de arestas dos vértices
-            vertices.aresta = [i for i in vertices.aresta if i.getV1() != v and i.getV2() != v]
+        for vertices in self.listaVertices:
+            vertices.aresta = [x for x in vertices.aresta if x.getV1() != v and x.getV2() != v]
 
     def insereA(self, u, v):
         aresta = Aresta(len(self.listaAresta), u, v)
@@ -51,6 +51,14 @@ class Grafo:
     #        for j in i.aresta:
     #            bla.append(j)
     #    return bla
+
+    def adjV(self, vertice): #Avalia se dado vértice é adjacente a outro e o retorna
+        for aresta in self.listaAresta:
+            if aresta.getV1() == vertice:
+                return aresta.getV2()
+            elif aresta.getV2() == vertice:
+                return aresta.getV1()
+        return False
     
     def adj(self, indice): 
         return self.listaVertices[indice].adj()
@@ -72,6 +80,7 @@ class Grafo:
         temp = self.listaAresta[e]
         print(f"{e} = ({temp.getV1()}, {temp.getV2()})")
 
+"""
 def teste():
     grafo1 = Grafo()
     for i in range(25):
@@ -86,3 +95,4 @@ def teste():
     #print(grafo1.arestas())
 
 teste()
+"""

@@ -50,6 +50,10 @@ class DFS(Grafo):
             if u.roteamento == None:
                 u.cor = "preto"
                 c += 1
+        if c > 1:
+            print("Grafo Não Conexo")
+        else:
+            print("Grafo Conexo")
         print("Quantidade de componentes conexos:", c)
         
 
