@@ -6,6 +6,12 @@ class Aresta:
         self._prevEdge = None
         self._nextEdge = None
         self._EulerEdge = None
+        self.__valor = None
+
+    # Estrutura para criação de heap, 
+    # utilizado no arquivo de caminhos mínimos
+    def __lt__(self, other): 
+        return self.getValor() < other.getValor()
 
     def theOtherOne(self, v):
         if self.getV1() == v:
@@ -18,6 +24,9 @@ class Aresta:
     def setV2(self, v2):
         self.__v2 = v2
 
+    def setValor(self, valor):
+        self.__valor = valor
+
     def getNome(self):
         return self.__nome
 
@@ -26,6 +35,9 @@ class Aresta:
 
     def getV2(self):
         return self.__v2
+    
+    def getValor(self):
+        return self.__valor
 
     # Getters
     def getPrevEdge(self):

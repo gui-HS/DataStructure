@@ -11,6 +11,11 @@ class Vertice:
         self.fechamento = None  # Tempo até fechamento do vértice
         self.eulerEdge = None
 
+    # Estrutura para criação de heap, 
+    # utilizado no arquivo de caminhos mínimos
+    def __lt__(self, other):
+        return self.d < other.d
+    
     def setEulerEdge(self, aresta):
         self.eulerEdge = aresta
 

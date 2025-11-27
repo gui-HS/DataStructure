@@ -29,7 +29,6 @@ def constroi_max_heap(arr):
     for i in range(n//2-1, -1, -1):
         heapify(arr, n, i)
 
-
 def heapsort(arr):
     constroi_max_heap(arr)
     n = len(arr)
