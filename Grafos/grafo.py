@@ -69,6 +69,14 @@ class Grafo:
                 return aresta.getV1()
         return False
 
+    #Verifica se dois vértices são adjacentes e o retorna
+    def adjV2(self, u, v):
+        for aresta in self.listaAresta:
+            if ((aresta.getV1() == u and aresta.getV2() == v) or  
+               (aresta.getV1() == v and aresta.getV2() == u)):
+                return aresta
+        return False
+
     def adj(self, indice):
         return self.listaVertices[indice].adj()
 
