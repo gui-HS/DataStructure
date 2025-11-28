@@ -69,7 +69,7 @@ class Grafo:
                 return aresta.getV1()
         return False
 
-    #Verifica se dois vértices são adjacentes e o retorna
+    # Verifica se dois vértices são adjacentes e o retorna
     def adjV2(self, u, v):
         for aresta in self.listaAresta:
             if ((aresta.getV1() == u and aresta.getV2() == v) or  
