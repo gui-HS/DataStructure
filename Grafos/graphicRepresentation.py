@@ -2,9 +2,9 @@ import turtle
 
 def graphic(grafo):
     t = turtle.Turtle()
-    #https://www.geeksforgeeks.org/python/draw-any-polygon-in-turtle-python/
+    # https://www.geeksforgeeks.org/python/draw-any-polygon-in-turtle-python/
 
-    #This will be used to draw the edges
+    # This will be used to draw the edges
     listPosition = list()
 
     #Draw Vectors

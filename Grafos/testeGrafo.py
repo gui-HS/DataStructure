@@ -30,8 +30,5 @@ def main():
 
     graphic(grafo1)
 
-
-    
-
 if __name__ == "__main__":
     main()

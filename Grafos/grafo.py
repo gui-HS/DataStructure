@@ -19,23 +19,17 @@ class Grafo:
 
     def arestas(self):
         for i in self.listaAresta:
-            print(i.getNome())
+            print(i.getNome()) 
 
     def insereV(self):
         self.listaVertices.append(Vertice(len(self.listaVertices)))
 
     def removeV(self, v):
-        self.listaVertices = [
-            i for i in self.listaVertices if i != v
-        ]  # Remove da lista de vertices
-        self.listaAresta = [
-            i for i in self.listaAresta if i.getV1() != v and i.getV2() != v
-        ]  # Remove todas arestas
+        self.listaVertices = [i for i in self.listaVertices if i != v]  # Remove da lista de vertices
+        self.listaAresta = [i for i in self.listaAresta if i.getV1() != v and i.getV2() != v]  # Remove todas arestas
 
-        for vertices in self.listaVertices:
-            vertices.aresta = [
-                x for x in vertices.aresta if x.getV1() != v and x.getV2() != v
-            ]
+        for vertices in self.listaVertices: # Não lembro o que faz, mas nem mexo mais
+            vertices.aresta = [x for x in vertices.aresta if x.getV1() != v and x.getV2() != v]
 
     def insereA(self, u, v):
         aresta = Aresta(len(self.listaAresta), u, v)
@@ -48,18 +42,9 @@ class Grafo:
 
         for vertice in self.listaVertices:
             vertice.aresta = [aresta for aresta in vertice.aresta if aresta != e]
-        # Remove instancias nos vertices utilizados
-        # v1 = e.getV1()
-        # v2 = e.getV2()
-        # v1.aresta = [aresta for aresta in v1.aresta if aresta != e]
-        # v2.aresta = [aresta for aresta in v2.aresta if aresta != e]
 
-    # def adj(self, v): #Adaptado para o exercicio de grafoBFS
-    #    bla = []
-    #    for i in self.listaVertices[v]:
-    #        for j in i.aresta:
-    #            bla.append(j)
-    #    return bla
+    def adj(self, v): #Adaptado para o exercicio de grafoBFS
+        return v.adjV()
 
     def adjV(self, vertice):  # Avalia se dado vértice é adjacente a outro e o retorna
         for aresta in self.listaAresta:
@@ -91,14 +76,12 @@ class Grafo:
         return len(a.aresta)
 
     def oposto(self, v, e):
-        pass
+        if e.getV1() == v:
+            return e.getV2()
+        elif e.getV2() == v:
+            return e.getV1()
+        return False
 
-    def verticesA(self, e):
-        temp = self.listaAresta[e]
-        print(f"{e} = ({temp.getV1()}, {temp.getV2()})")
-
-
-"""
 def teste():
     grafo1 = Grafo()
     for i in range(25):
@@ -113,5 +96,5 @@ def teste():
     #print(grafo1.arestas())
 
 teste()
-"""
+
 

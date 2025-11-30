@@ -36,8 +36,7 @@ class GrafoDirigido:
         aresta = Aresta(len(self.listaAresta), u, v)
         u = self.listaVertices[u]
         v = self.listaVertices[v]
-        u.addAdjacente(aresta)    
-        v.addAdjacente(aresta)
+        u.addAdjacente(aresta) # Adiciona a aresta apenas a u
         self.listaAresta.append(aresta)
     
     def removeA(self, e):
@@ -54,23 +53,35 @@ class GrafoDirigido:
                     print(j.v2)
 
     def getA(self, u, v):
-        for i in self.listaAresta:
-            #Para arestas dirigidas
-            for j in i.aresta:
-                if (j.v1 == u and j.v2 == v):
-                    return j
-        return False
+        # Para arestas não dirigidas
+        for aresta in self.listaAresta:
+            if aresta.getV1() == u and aresta.getV2() == v:
+                return aresta
+        return None
+    
+    def grauE(self, v):
+        qtd = 0
+        for aresta in self.listaAresta:
+            if aresta.getV2() == v:
+                qtd += 1
+        return qtd
+
+    def grauS(self, v):
+        return len(v.adjV())
 
     def grau(self, v):
         a = self.listaVertices[v]
         return len(a.aresta)
     
     def oposto(self, v, e):
-        pass
+        if e.getV1() == v:
+            return e.getV2()
+        elif e.getV2() == v:
+            return e.getV1()
+        return False
     
     def verticesA(self, e):
-        temp = self.listaAresta[e]
-        print(f"{e} = ({temp.v1}, {temp.v2})")
+        return (e.getV1(), e.getV2())
 
     def arestasS(self, v):
         for i in self.listaAresta:

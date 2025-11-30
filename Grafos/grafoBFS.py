@@ -25,7 +25,7 @@ class BFS(Grafo):
 
         while self.Q.inicial: #Enquanto houver vertices na fila
             u = self.Q.remove()
-            for v in u.adj():
+            for v in u.adjV():
                 if v.cor == "branco":
                     self.Q.insere(v)
                     v.cor = "cinza" #Cor para Cinza
