@@ -10,7 +10,7 @@ class Vertice:
         self.abertura = None  # Tempo até abertura do vértice
         self.fechamento = None  # Tempo até fechamento do vértice
         self.eulerEdge = None
-
+        
     # Estrutura para criação de heap, 
     # utilizado no arquivo de caminhos mínimos
     def __lt__(self, other):
