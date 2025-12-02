@@ -1,4 +1,5 @@
 import turtle
+from grafo import Grafo
 
 def graphic(grafo):
     t = turtle.Turtle()
@@ -7,7 +8,7 @@ def graphic(grafo):
     # This will be used to draw the edges
     listPosition = list()
 
-    #Draw Vectors
+    # Draw Vectors
     t.hideturtle()
     t.penup()
     t.setpos(0,300)
@@ -25,8 +26,8 @@ def graphic(grafo):
         v1 = i.getV1() 
         v2 = i.getV2()
         
-        v1Position = listPosition[v1]
-        v2Position = listPosition[v2]
+        v1Position = listPosition[v1.nome]
+        v2Position = listPosition[v2.nome]
 
         t.setpos(v1Position)
         t.pendown()
@@ -35,3 +36,14 @@ def graphic(grafo):
         print(v1,v2)
 
     turtle.done()
+
+
+grafo1 = Grafo()
+for i in range(25):
+    grafo1.insereV()
+
+grafo1.insereA(grafo1.listaVertices[0], grafo1.listaVertices[12])
+grafo1.insereA(grafo1.listaVertices[12], grafo1.listaVertices[2])
+grafo1.insereA(grafo1.listaVertices[2], grafo1.listaVertices[3])
+
+graphic(grafo1)

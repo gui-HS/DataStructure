@@ -24,11 +24,11 @@ class Hierholzer:
                 e1 = e0
                 while v != u:
                     if v not in self.Vvisit:
-                        self.Vvisit.append(v) # No pseudo código tá diferente, mas só assim funcionou
+                        self.Vvisit.append(v)
                         self.nVvisit += 1
                     
-                    if not v.aresta: #Para evitar o erro de list index out of range
-                        break
+                    if not v.aresta: # Para evitar o erro de list index out of range
+                        break        # Significa que não possui arestas adjacentes
 
                     e2 = v.aresta[0]
                     e2.setNextEdge(e1)
@@ -60,7 +60,7 @@ class Hierholzer:
         else: return "Ciclo euleriano"
 
 def testeGrafo():
-    #Grafo com 2 vértices de grau ímpar
+    # Grafo com 2 vértices de grau ímpar
     grafo1 = Grafo()
     for _ in range(4):
         grafo1.insereV()
@@ -77,7 +77,7 @@ def testeGrafo():
     print(f"{hierholzer.HierholzerAlgorithm(vertices[0])}, {grafo1.getOrdem()} vértices, {grafo1.getTamanho()} arestas")
 
 def testeGrafoEuleriano():
-    #Teste com grafo euleriano para comparação
+    # Teste com grafo euleriano para comparação
     grafo2 = Grafo()
     for _ in range(4):
         grafo2.insereV()

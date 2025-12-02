@@ -106,7 +106,7 @@ class FloydWarshall:
         return self.roteamento, self.d
     
 def test():
-    #Teste com grafo euleriano para comparação
+    # Teste com grafo euleriano para comparação
     grafo2 = Grafo()
     for _ in range(6):
         grafo2.insereV()
@@ -132,8 +132,9 @@ def test():
         
     grafoDijkstra = Dijkstra(grafo2)
     grafoFloyd = FloydWarshall(grafo2)
-    #print(grafoDijkstra.dijkstra(grafo2.listaVertices[0], grafo2.listaVertices[3]))
-    #print(grafoFloyd.montarW())
+    print(grafoDijkstra.dijkstra(grafo2.listaVertices[0], grafo2.listaVertices[3]))
+    
+    """
     grafoFloyd.floydWarshall()
     print("Distância matriz de custo inicial")
     for coluna in grafoFloyd.W: 
@@ -144,14 +145,15 @@ def test():
     print("\nMatriz de roteamento")
     for coluna in grafoFloyd.roteamento:
         print(coluna)
+    """
 
     # Agora, vamos fazer uma comparação de memória, criando duas matrizes comicamente grandes C:
     grafo4 = Grafo()
-    for _ in range(1000):
+    for _ in range(99):
         grafo4.insereV()
 
     vertices4 = grafo4.listaVertices 
-    for i in range(999):
+    for i in range(98):
         grafo4.insereA(vertices4[i], vertices4[i+1]) 
     
     for vertices in grafo4.listaVertices:
@@ -159,19 +161,21 @@ def test():
     for aresta in grafo4.listaAresta:
         aresta.setValor(random.randint(0,5)) 
 
+    """
     #Dijkstra
     inicio1 = time.time() 
     grafoDijkstra4 = Dijkstra(grafo4)
-    grafoDijkstra4.dijkstra(vertices4[0], vertices4[999])
+    grafoDijkstra4.dijkstra(vertices4[0], vertices4[98])
     fim1 = time.time()
 
     #Floyd
-    inicio2 = time.time()
-    grafoFloyd4 = FloydWarshall(grafo4)
-    grafoFloyd4.floydWarshall()
-    fim2 = time.time()
+    #inicio2 = time.time()
+    #grafoFloyd4 = FloydWarshall(grafo4)
+    #grafoFloyd4.floydWarshall()
+    #fim2 = time.time()
     print("\n"+"-"*10, "Memória", "-"*10)
-    print("Dijkstra: ", asizeof.asizeof(grafoDijkstra4), "B", "Floy: ", asizeof.asizeof(grafoFloyd4), "B")
+    print("Dijkstra: ", asizeof.asizeof(grafoDijkstra4), "B", "Floyd: ", "asizeof.asizeof(grafoFloyd4)", "B")
     print("\n"+"-"*10, "Tempo", "-"*10) 
-    print("Dijkstra: ", fim1 - inicio1, "B", "Floy: ", fim2 - inicio2, "B")
+    print("Dijkstra: ", fim1 - inicio1, "s ", "Floyd: ", "fim2 - inicio2", "s")
+    """
 test()   

@@ -82,7 +82,7 @@ class Grafo:
             return e.getV1()
         return False
 
-def teste():
+"""def teste():
     grafo1 = Grafo()
     for i in range(25):
         grafo1.insereV()
@@ -95,6 +95,6 @@ def teste():
     print(grafo1.listaVertices)
     #print(grafo1.arestas())
 
-teste()
+teste()"""
 
 

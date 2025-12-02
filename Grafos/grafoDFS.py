@@ -20,7 +20,7 @@ class DFS(Grafo):
 
     def DFSVisit(self, u):
         u.cor = "cinza"
-        self.tempo = self.tempo + 1
+        self.tempo += 1
         u.abertura = self.tempo
 
         for v in u.adjV():
@@ -28,9 +28,9 @@ class DFS(Grafo):
                 v.roteamento = u
                 self.DFSVisit(v)
             
-            u.cor = "preto"
-            self.tempo = self.tempo + 1
-            u.fechamento = self.tempo
+        u.cor = "preto"
+        self.tempo = self.tempo + 1
+        u.fechamento = self.tempo
 
     def printVerotes(self):
         for u in self.V:
@@ -41,8 +41,8 @@ class DFS(Grafo):
             print("Vetor:", u.getNome(), "| Tempo de abertura:", u.abertura,
                 "| Tempo de Fechamento:", u.fechamento, "| Vetor antecessor:", temp)
     
-    def verConexidade(self): #Metodo para classificar um grafo nao dirigido como conexo ou nao-conexo
-        #Inicialize vectors
+    def verConexidade(self): # Metodo para classificar um grafo nao dirigido como conexo ou nao-conexo
+        # Inicialize vectors
         self.DFS()
         c = 0
 

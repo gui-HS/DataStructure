@@ -33,9 +33,6 @@ class BFS(Grafo):
                     v.d = u.d + 1 #Distância de v
             u.cor = "preto"
     
-    def conexidade(self):
-        pass
-    
     def imprimeCaminho(self, s, v): #s (vetor inicial), v (vetor final)
         if s == v:
             print(s.nome)
@@ -45,6 +42,19 @@ class BFS(Grafo):
         else:
             self.imprimeCaminho(s, v.roteamento)
             print("Vertice:", v.nome)
+
+    def verConexidade(self): #Metodo para classificar um grafo nao dirigido como conexo ou nao-conexo
+        c = 0
+
+        for u in self.listaVertices:
+            if u.roteamento == None:
+                u.cor = "preto"
+                c += 1
+        if c > 1:
+            print("Grafo Não Conexo")
+        else:
+            print("Grafo Conexo")
+        print("Quantidade de componentes conexos:", c)
 
 def testeBFS():
     grafo1 = BFS()
@@ -61,5 +71,6 @@ def testeBFS():
     
     print("Caminho do vértice 0 até 3: (Deve percorrer 0,12,2,3)")
     grafo1.imprimeCaminho(grafo1.listaVertices[0],grafo1.listaVertices[3])
+    grafo1.verConexidade()
 
 testeBFS()

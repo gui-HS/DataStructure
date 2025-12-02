@@ -67,9 +67,8 @@ class Kruskal:
             if uRep != vRep:
                 A.append(aresta) #Cria uma tupla
                 realSet1.union(u,v)
-
         
-        print(f"Vértices: {len(self.V)}, Arestas disponíveis: {len(self.E)}, e retornou {len(A)} arestas")
+        print(f"Vértices: {len(self.V)} e retornou {len(A)} arestas")
         return A    
 
 class Prim:
@@ -101,7 +100,6 @@ class Prim:
                         v.roteamento = u
                         v.d = custoAresta
                         heapq.heapify(self.Q)
-    
 
 def test():
     #Teste com grafo euleriano para comparação
