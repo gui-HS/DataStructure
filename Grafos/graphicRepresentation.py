@@ -33,7 +33,6 @@ def graphic(grafo):
         t.pendown()
         t.goto(v2Position)
         t.penup()
-        print(v1,v2)
 
     turtle.done()
 

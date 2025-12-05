@@ -4,7 +4,7 @@ class Vertice:
         self.nome = nome
         self.next = None  # Refência ao próximo vetor
         self.cor = None  # BRANCO (On), CINZA (On operation), PRETO (off)
-        self.caminho = None  # Sla
+        self.caminho = None  # Caminho de vértices
         self.d = None  # Distância
         self.roteamento = None  # Vértice Pai
         self.abertura = None  # Tempo até abertura do vértice
@@ -38,15 +38,40 @@ class Vertice:
         return self.aresta
 
     def adj(self):
-        # bla = []
-        # for i in self.aresta:
-        #    a = i.getV2()
-        #    bla.append(a)
         return self.aresta
 
     def adjV(self):
         setV = set()
         for i in self.aresta:
-            setV.add(i.getV1())
-            setV.add(i.getV2())
+            v1 = i.getV1()
+            v2 = i.getV2()
+
+            if v1 != self:
+                setV.add(v1)
+            if v2 != self:
+                setV.add(v2)
         return setV
+    
+    def grauCor(self):
+        verticesAdj = self.adjV()
+        coresAdj = set()
+        for vertices in verticesAdj:
+            if vertices.cor != None:
+                coresAdj.add(vertices.cor)
+        if len(coresAdj) == 0:
+            return 0
+        else:
+            return len(coresAdj)
+        
+    def listaCores(self):
+        verticesAdj = self.adjV()
+        coresAdj = set()
+        for vertices in verticesAdj:
+            if vertices.cor != None:
+                coresAdj.add(vertices.cor)
+        coresAdj = [x for x in coresAdj]
+        coresAdj.sort()
+        if len(coresAdj) == 0:
+            return []
+        else:
+            return coresAdj
